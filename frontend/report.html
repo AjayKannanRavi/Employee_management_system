@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reports</title>
+  <link rel="stylesheet" href="assets/css/report.css">
+</head>
+<body>
+  <header>
+    <h1>Reports</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="employees.html">Employees</a>
+      <a href="add-employee.html">Add Employee</a>
+      <a href="report.html" class="active">Reports</a>
+      <a href="setting.html">Settings</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Summary Cards -->
+    <section class="summary-cards">
+      <div class="card">
+        <h3>Total Employees</h3>
+        <p id="totalEmployees">120</p>
+      </div>
+      <div class="card">
+        <h3>Departments</h3>
+        <p id="totalDepartments">5</p>
+      </div>
+      <div class="card">
+        <h3>Active Employees</h3>
+        <p id="activeEmployees">98</p>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+      <label for="department">Filter by Department:</label>
+      <select id="department">
+        <option value="all">All</option>
+        <option value="HR">HR</option>
+        <option value="IT">IT</option>
+        <option value="Finance">Finance</option>
+        <option value="Sales">Sales</option>
+      </select>
+
+      <label for="year">Year:</label>
+      <select id="year">
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+      </select>
+
+      <button id="applyFilter">Apply</button>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts">
+      <div class="chart-container">
+        <h3>Employees by Department</h3>
+        <canvas id="employeeChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Monthly Hiring Trend</h3>
+        <canvas id="hiringTrendChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Active vs Inactive Employees</h3>
+        <canvas id="statusChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Export Reports -->
+    <section class="export">
+      <button id="exportPDF">Export as PDF</button>
+      <button id="exportCSV">Export as CSV</button>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/report.js"></script>
+</body>
+</html>

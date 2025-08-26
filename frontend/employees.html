@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employees</title>
+  <link rel="stylesheet" href="assets/css/employee.css">
+</head>
+<body>
+  <header>
+    <h1>Employees</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="employees.html" class="active">Employees</a>
+      <a href="add-employee.html">Add Employee</a>
+      <a href="report.html">Reports</a>
+      <a href="setting.html">Settings</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Employee List</h2>
+
+    <div class="employee-controls">
+      <input type="text" id="searchBox" placeholder="Search employees...">
+
+      <select id="roleFilter">
+        <option value="all">All Roles</option>
+        <option value="Manager">Manager</option>
+        <option value="Developer">Developer</option>
+        <option value="HR">HR</option>
+      </select>
+
+      <button id="exportCSV">Export CSV</button>
+      <button id="bulkDelete">Delete Selected</button>
+    </div>
+
+    <table id="employeeTable">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAll"></th>
+          <th data-column="id">ID ⬍</th>
+          <th data-column="name">Name ⬍</th>
+          <th data-column="email">Email</th>
+          <th data-column="role">Role ⬍</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="pagination"></div>
+  </main>
+
+  <script src="assets/js/employees.js"></script>
+</body>
+</html>

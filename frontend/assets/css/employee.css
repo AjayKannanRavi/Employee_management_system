@@ -1,0 +1,248 @@
+/* ===== Employee Page Styles (Unified with Settings) ===== */
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+  background: #f4f6f9;
+  color: #333;
+}
+
+/* ===== Header ===== */
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+header h1 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+nav a {
+  color: #ecf0f1;
+  margin: 0 12px;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  background: #3498db;
+}
+
+/* ===== Main Layout ===== */
+main {
+  padding: 30px;
+}
+
+/* ===== Employee Controls (Search, Filter, Add) ===== */
+.employee-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.employee-controls input,
+.employee-controls select,
+.employee-controls button {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+}
+
+.employee-controls input:focus,
+.employee-controls select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 4px rgba(52, 152, 219, 0.4);
+}
+
+.employee-controls button {
+  background: #3498db;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.employee-controls button:hover {
+  background: #2980b9;
+}
+
+/* ===== Employee Table ===== */
+.employee-table {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #2c3e50;
+  color: #fff;
+}
+
+thead th {
+  padding: 0.9rem;
+  text-align: left;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: 0.2s ease;
+}
+
+tbody tr:hover {
+  background: #f9f9f9;
+}
+
+td {
+  padding: 0.9rem;
+  font-size: 0.95rem;
+}
+
+td button.delete {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.3s ease;
+}
+
+td button.delete:hover {
+  background: #c0392b;
+}
+
+td a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Pagination ===== */
+#pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#pagination button {
+  margin: 0 4px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #2c3e50;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#pagination button.active,
+#pagination button:hover {
+  background: #3498db;
+}
+
+/* ===== Dark Mode ===== */
+body.dark {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+body.dark header {
+  background: #0f172a;
+}
+
+body.dark nav a {
+  color: #f8fafc;
+}
+
+body.dark .employee-table {
+  background: #334155;
+}
+
+body.dark table thead {
+  background: #475569;
+}
+
+body.dark td,
+body.dark th {
+  color: #f8fafc;
+}
+
+body.dark .employee-controls input,
+body.dark .employee-controls select {
+  background: #1e293b;
+  border: 1px solid #475569;
+  color: #f8fafc;
+}
+
+body.dark .employee-controls button {
+  background: #3b82f6;
+}
+
+body.dark .employee-controls button:hover {
+  background: #2563eb;
+}
+
+body.dark td button.delete {
+  background: #ef4444;
+}
+
+body.dark td button.delete:hover {
+  background: #dc2626;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .employee-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody td {
+    display: block;
+    text-align: right;
+    padding: 0.6rem;
+    position: relative;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    font-weight: 600;
+    color: #aaa;
+  }
+}

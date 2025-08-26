@@ -1,0 +1,131 @@
+
+/* ===== Settings Page Styles ===== */
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+  background: #f4f6f9;
+  color: #333;
+}
+
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+nav a {
+  color: #ecf0f1;
+  margin: 0 12px;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+nav a:hover,
+nav a.active {
+  background: #3498db;
+}
+
+main {
+  padding: 30px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+/* ===== Card Style (Reusable for Each Section) ===== */
+.settings-option {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.settings-option h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 6px;
+}
+
+.settings-option label {
+  display: block;
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+.settings-option input[type="text"],
+.settings-option input[type="email"],
+.settings-option input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+.settings-option button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #3498db;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.settings-option button:hover {
+  background: #2980b9;
+}
+
+/* Dark Mode */
+body.dark {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+body.dark header {
+  background: #0f172a;
+}
+
+body.dark nav a {
+  color: #f8fafc;
+}
+
+body.dark .settings-option {
+  background: #334155;
+}
+
+body.dark .settings-option h3 {
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+body.dark .settings-option input {
+  background: #1e293b;
+  border: 1px solid #475569;
+  color: #f8fafc;
+}
+
+body.dark .settings-option button {
+  background: #3b82f6;
+}
+
+body.dark .settings-option button:hover {
+  background: #2563eb;
+}
+
+

@@ -1,0 +1,222 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: #f4f6f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header (Same as Settings) ===== */
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.4rem;
+}
+
+nav a {
+  color: #ecf0f1;
+  margin: 0 12px;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  background: #3498db;
+}
+
+/* ===== Main Layout ===== */
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* ===== Summary Cards ===== */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #1e3a8a;
+}
+
+.card p {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* ===== Filters ===== */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.filters label {
+  font-weight: 500;
+  margin-right: 0.4rem;
+}
+
+.filters select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.filters button {
+  padding: 0.6rem 1.2rem;
+  background: #2563eb;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.filters button:hover {
+  background: #1d4ed8;
+}
+
+/* ===== Charts ===== */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chart-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.chart-container:hover {
+  transform: translateY(-4px);
+}
+
+.chart-container h3 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #1e3a8a;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+canvas {
+  width: 100%;
+  height: 250px;
+}
+
+/* ===== Export Section ===== */
+.export {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.export button {
+  padding: 0.8rem 1.5rem;
+  margin: 0 0.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#exportPDF {
+  background: #dc2626;
+  color: white;
+}
+
+#exportPDF:hover {
+  background: #b91c1c;
+}
+
+#exportCSV {
+  background: #059669;
+  color: white;
+}
+
+#exportCSV:hover {
+  background: #047857;
+}
+
+/* ===== Dark Mode (Same as Settings) ===== */
+body.dark {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+body.dark header {
+  background: #0f172a;
+}
+
+body.dark nav a {
+  color: #f8fafc;
+}
+
+body.dark .card,
+body.dark .filters,
+body.dark .chart-container {
+  background: #334155;
+  color: #f8fafc;
+}
+
+body.dark .card h3,
+body.dark .chart-container h3 {
+  color: #e0e7ff;
+}
+
+body.dark .filters select {
+  background: #1e293b;
+  border: 1px solid #475569;
+  color: #f8fafc;
+}
