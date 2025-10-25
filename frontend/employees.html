@@ -12,6 +12,7 @@
       <a href="index.html">Home</a>
       <a href="employees.html" class="active">Employees</a>
       <a href="add-employee.html">Add Employee</a>
+      <a href="edit-employee.html">Edit Employee</a>
       <a href="report.html">Reports</a>
       <a href="setting.html">Settings</a>
     </nav>
@@ -25,9 +26,6 @@
 
       <select id="roleFilter">
         <option value="all">All Roles</option>
-        <option value="Manager">Manager</option>
-        <option value="Developer">Developer</option>
-        <option value="HR">HR</option>
       </select>
 
       <button id="exportCSV">Export CSV</button>
@@ -42,6 +40,8 @@
           <th data-column="name">Name ⬍</th>
           <th data-column="email">Email</th>
           <th data-column="role">Role ⬍</th>
+          <th data-column="startDate">Join Date ⬍</th>
+          <th data-column="salary">Salary ⬍</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -51,6 +51,7 @@
     <div id="pagination"></div>
   </main>
 
+  <script src="assets/js/data.js"></script>
   <script src="assets/js/employees.js"></script>
 </body>
 </html>

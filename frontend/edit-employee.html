@@ -1,37 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Edit Employee</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee | EMS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/employee.css">
 </head>
 <body>
-  <header>
-    <h1>Edit Employee</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="employees.html">Employees</a>
-      <a href="add-employee.html">Add Employee</a>
-    </nav>
-  </header>
+    <header>
+        <h1>Edit Employee</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="employees.html">Employees</a>
+            <a href="add-employee.html">Add Employee</a>
+            <a href="report.html">Reports</a>
+            <a href="setting.html">Settings</a>
+        </nav>
+    </header>
 
-  <main>
-    <form id="employeeForm">
-      <input type="hidden" id="empId">
+    <main>
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Update Employee Information</h2>
+                <p class="last-updated">Last updated: <span id="lastUpdated">-</span></p>
+            </div>
 
-      <label>Name</label>
-      <input type="text" id="name" required>
+            <form id="employeeForm" class="employee-form">
+                <input type="hidden" id="empId">
 
-      <label>Email</label>
-      <input type="email" id="email" required>
+                <div class="form-sections">
+                    <!-- Personal Information Section -->
+                    <section class="form-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" required
+                                pattern="[A-Za-z\s]{2,50}"
+                                title="Name should only contain letters and spaces, 2-50 characters">
+                            <span class="form-hint">Enter full name as per records</span>
+                        </div>
 
-      <label>Role</label>
-      <input type="text" id="role" required>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" required>
+                            <span class="form-hint">Company email address</span>
+                        </div>
 
-      <button type="submit">Update Employee</button>
-    </form>
-  </main>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" 
+                                pattern="[0-9]{10}"
+                                title="Please enter a valid 10-digit phone number">
+                            <span class="form-hint">10-digit contact number</span>
+                        </div>
+                    </section>
 
-  <script src="assets/js/form.js"></script>
+                    <!-- Employment Details Section -->
+                    <section class="form-section">
+                        <h3>Employment Details</h3>
+                        <div class="form-group">
+                            <label for="role">Role <span class="required">*</span></label>
+                            <select id="role" required></select>
+                            <span class="form-hint">Current position in company</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department <span class="required">*</span></label>
+                            <select id="department" required>
+                                <option value="">-- Select Department --</option>
+                                <option value="HR">Human Resources</option>
+                                <option value="IT">Information Technology</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Operations">Operations</option>
+                                <option value="Legal">Legal</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="startDate">Start Date <span class="required">*</span></label>
+                                <input type="date" id="startDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">Status <span class="required">*</span></label>
+                                <select id="status" required>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                    <option value="On Leave">On Leave</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Compensation Section -->
+                    <section class="form-section">
+                        <h3>Compensation</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="salary">Annual Salary <span class="required">*</span></label>
+                                <div class="input-with-prefix">
+                                    <span class="prefix">$</span>
+                                    <input type="number" id="salary" required min="0" step="1000">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="payGrade">Pay Grade</label>
+                                <select id="payGrade">
+                                    <option value="">-- Select Grade --</option>
+                                    <option value="L1">Level 1</option>
+                                    <option value="L2">Level 2</option>
+                                    <option value="L3">Level 3</option>
+                                    <option value="L4">Level 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="window.history.back()">
+                        <span class="icon">←</span> Cancel
+                    </button>
+                    <div class="primary-actions">
+                        <button type="button" class="delete-btn" id="deleteEmployee">
+                            <span class="icon">🗑️</span> Delete Employee
+                        </button>
+                        <button type="submit" class="update-btn">
+                            <span class="icon">✓</span> Update Employee
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Error/Success Message Container -->
+        <div id="messageContainer" class="message-container"></div>
+    </main>
+
+    <!-- Custom Confirmation Dialog -->
+    <div id="confirmDialog" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Action</h3>
+            <p id="confirmMessage"></p>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancelAction">Cancel</button>
+                <button class="confirm-btn" id="confirmAction">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/form.js"></script>
+    <script src="assets/js/validation.js"></script>
 </body>
 </html>

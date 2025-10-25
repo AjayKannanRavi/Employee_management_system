@@ -12,6 +12,7 @@
       <a href="index.html">Home</a>
       <a href="employees.html">Employees</a>
       <a href="add-employee.html">Add Employee</a>
+      <a href="edit-employee.html">Edit Employee</a>
       <a href="report.html" class="active">Reports</a>
       <a href="setting.html">Settings</a>
     </nav>
@@ -36,38 +37,59 @@
 
     <!-- Filters -->
     <section class="filters">
-      <label for="department">Filter by Department:</label>
-      <select id="department">
-        <option value="all">All</option>
-        <option value="HR">HR</option>
-        <option value="IT">IT</option>
-        <option value="Finance">Finance</option>
-        <option value="Sales">Sales</option>
+      <label for="roleFilter">Filter by Role:</label>
+      <select id="roleFilter">
+        <option value="all">All Roles</option>
       </select>
 
-      <label for="year">Year:</label>
-      <select id="year">
-        <option value="2025">2025</option>
-        <option value="2024">2024</option>
-        <option value="2023">2023</option>
+      <label for="dateRange">Time Period:</label>
+      <select id="dateRange">
+        <option value="all">All Time</option>
+        <option value="year">Past Year</option>
+        <option value="6months">Past 6 Months</option>
+        <option value="3months">Past 3 Months</option>
+        <option value="month">Past Month</option>
       </select>
 
-      <button id="applyFilter">Apply</button>
+      <label for="salaryRange">Salary Range:</label>
+      <select id="salaryRange">
+        <option value="all">All Ranges</option>
+        <option value="0-30000">₹0 - ₹30,000</option>
+        <option value="30001-50000">₹30,001 - ₹50,000</option>
+        <option value="50001-80000">₹50,001 - ₹80,000</option>
+        <option value="80001">Above ₹80,000</option>
+      </select>
     </section>
 
     <!-- Charts Section -->
     <section class="charts">
       <div class="chart-container">
-        <h3>Employees by Department</h3>
-        <canvas id="employeeChart"></canvas>
+        <h3>Employees by Role</h3>
+        <canvas id="roleChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Salary Distribution</h3>
+        <canvas id="salaryChart"></canvas>
       </div>
       <div class="chart-container">
         <h3>Monthly Hiring Trend</h3>
         <canvas id="hiringTrendChart"></canvas>
       </div>
-      <div class="chart-container">
-        <h3>Active vs Inactive Employees</h3>
-        <canvas id="statusChart"></canvas>
+    </section>
+
+    <!-- Detailed Stats -->
+    <section class="detailed-stats">
+      <div class="stats-card">
+        <h3>Role Statistics</h3>
+        <div id="roleStats" class="stats-content"></div>
+      </div>
+      <div class="stats-card">
+        <h3>Salary Statistics</h3>
+        <div id="salaryStats" class="stats-content"></div>
+      </div>
+      <div class="stats-card">
+        <h3>Recent Hires</h3>
+        <div id="recentHires" class="stats-content"></div>
       </div>
     </section>
 
@@ -79,6 +101,7 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/data.js"></script>
   <script src="assets/js/report.js"></script>
 </body>
 </html>

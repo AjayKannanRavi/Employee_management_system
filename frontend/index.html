@@ -12,6 +12,7 @@
       <a href="index.html" class="active">Home</a>
       <a href="employees.html">Employees</a>
       <a href="add-employee.html">Add Employee</a>
+      <a href="edit-employee.html">Edit Employee</a>
       <a href="report.html">Reports</a>
       <a href="setting.html">Settings</a>
       <button class="logout-btn">Logout</button>
@@ -53,15 +54,43 @@
     <!-- Recent Activity -->
     <section class="recent">
       <h2>Recent Activity</h2>
-      <ul>
-        <li>👨‍💼 John Doe added to Sales department</li>
-        <li>📋 Performance review updated for Jane Smith</li>
-        <li>➕ New employee Rajesh Kumar added</li>
-        <li>✏️ Employee data updated for Sarah Johnson</li>
-      </ul>
+      <div class="activity-controls">
+        <select id="activityFilter">
+          <option value="all">All Activities</option>
+          <option value="add">New Hires</option>
+          <option value="edit">Updates</option>
+          <option value="delete">Deletions</option>
+        </select>
+        <button id="refreshActivity" title="Refresh Activities">🔄</button>
+      </div>
+      <div id="activityFeed" class="activity-feed">
+        <!-- Dynamic content will be inserted here -->
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <a href="add-employee.html" class="action-btn">
+          <span class="icon">➕</span>
+          Add Employee
+        </a>
+        <a href="employees.html" class="action-btn">
+          <span class="icon">👥</span>
+          View All
+        </a>
+        <a href="report.html" class="action-btn">
+          <span class="icon">📊</span>
+          Reports
+        </a>
+      </div>
     </section>
   </main>
 
   <footer>© 2025 Employee Management System | All Rights Reserved</footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
