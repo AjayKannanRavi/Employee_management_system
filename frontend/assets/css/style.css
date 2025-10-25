@@ -1,12 +1,351 @@
-/* ========================
-   Global Styles
-======================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+@import 'base.css';
+
+/* Header & Navigation */
+header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-30);
+    background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+    padding: var(--spacing-4);
+    color: white;
+    box-shadow: var(--shadow-md);
 }
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    animation: fadeIn 0.5s ease;
+}
+
+/* ========================
+   Search Results
+======================== */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-top: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.search-result-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: #f8fafc;
+}
+
+.employee-info h3 {
+  color: #2d3748;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.employee-info p {
+  color: #718096;
+  font-size: 0.875rem;
+}
+
+.employee-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.employee-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.employee-status.active {
+  background: #c6f6d5;
+  color: #276749;
+}
+
+.employee-status.inactive {
+  background: #fed7d7;
+  color: #9b2c2c;
+}
+
+.edit-btn {
+  padding: 4px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: white;
+  color: #4a5568;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.edit-btn:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+/* Form Styles */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.employee-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.cancel-btn,
+.update-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-btn {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.update-btn {
+  background: #4299e1;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #cbd5e0;
+}
+
+.update-btn:hover {
+  background: #3182ce;
+}
+
+.no-results {
+  padding: 16px;
+  text-align: center;
+  color: #718096;
+}
+
+/* ========================
+   Activity Feed
+======================== */
+.recent {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.recent h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.activity-controls select {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #4a5568;
+}
+
+.activity-controls button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #edf2f7;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.activity-controls button:hover {
+  background: #e2e8f0;
+}
+
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f8fafc;
+  transition: transform 0.2s;
+}
+
+.activity-item:hover {
+  transform: translateX(4px);
+}
+
+.activity-icon {
+  background: #edf2f7;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-message {
+  color: #2d3748;
+  margin-bottom: 4px;
+}
+
+.activity-time {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.activity-item.add { border-left: 4px solid #48bb78; }
+.activity-item.edit { border-left: 4px solid #4299e1; }
+.activity-item.delete { border-left: 4px solid #f56565; }
+.activity-item.role { border-left: 4px solid #9f7aea; }
+.activity-item.search { border-left: 4px solid #ecc94b; }
+
+.search-action {
+  color: #3182ce;
+  text-decoration: none;
+  margin-left: 8px;
+  font-size: 0.9rem;
+}
+
+.search-action:hover {
+  text-decoration: underline;
+}
+
+.no-activity {
+  text-align: center;
+  color: #718096;
+  padding: 20px;
+}
+
+/* ========================
+   Quick Actions
+======================== */
+.quick-actions {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.quick-actions h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #2d3748;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  background: #edf2f7;
+}
+
+.action-btn .icon {
+  font-size: 1.4rem;
+  background: #edf2f7;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* ========================
+   Stats Section 
+======================== */
 
 body {
   background: #f4f6f9;
@@ -96,6 +435,31 @@ nav a.active {
   display: flex;
   justify-content: center;
   gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.search-bar button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #2c3e50;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-bar button:hover {
+  background: #34495e;
 }
 
 .search-bar input {

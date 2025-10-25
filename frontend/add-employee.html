@@ -12,6 +12,7 @@
       <a href="index.html">Home</a>
       <a href="employees.html">Employees</a>
       <a href="add-employee.html" class="active">Add Employee</a>
+      <a href="edit-employee.html">Edit Employee</a>
       <a href="report.html">Reports</a>
       <a href="setting.html">Settings</a>
     </nav>
@@ -19,45 +20,82 @@
 
   <main>
     <section class="form-container">
-      <h2>New Employee Details</h2>
+      <div class="form-header">
+        <h2>Add New Employee</h2>
+      </div>
+
       <form id="employeeForm">
-        
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="Enter employee name" required>
+        <!-- Personal Information Section -->
+        <div class="form-section">
+          <h3>Personal Information</h3>
+          
+          <div class="form-group">
+            <label for="name">Full Name <span class="required">*</span></label>
+            <input type="text" id="name" placeholder="Enter full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" placeholder="Enter company email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" placeholder="Enter 10-digit number" required>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="example@company.com" required>
+        <!-- Employment Details Section -->
+        <div class="form-section">
+          <h3>Job Information</h3>
+          
+          <div class="form-group">
+            <label for="role">Role <span class="required">*</span></label>
+            <select id="role" required>
+              <option value="">-- Select Role --</option>
+              <option value="Manager">Manager</option>
+              <option value="Developer">Developer</option>
+              <option value="Designer">Designer</option>
+              <option value="HR">HR</option>
+              <option value="Analyst">Analyst</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="department">Department <span class="required">*</span></label>
+            <select id="department" required>
+              <option value="">-- Select Department --</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Design">Design</option>
+              <option value="HR">Human Resources</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="startDate">Start Date <span class="required">*</span></label>
+            <input type="date" id="startDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="salary">Annual Salary <span class="required">*</span></label>
+            <div class="input-with-prefix">
+              <span class="prefix">$</span>
+              <input type="number" id="salary" placeholder="Enter annual salary" required>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="role">Role</label>
-          <select id="role" required>
-            <option value="">-- Select Role --</option>
-            <option value="Manager">Manager</option>
-            <option value="Developer">Developer</option>
-            <option value="HR">HR</option>
-            <option value="Designer">Designer</option>
-          </select>
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" onclick="window.location.href='employees.html'">← Back</button>
+          <button type="submit" class="btn-submit">➕ Add Employee</button>
         </div>
-
-        <div class="form-group">
-          <label for="startDate">Joining Date</label>
-          <input type="date" id="startDate" required>
-        </div>
-
-        <div class="form-group">
-          <label for="salary">Salary (₹)</label>
-          <input type="number" id="salary" placeholder="Enter salary" required>
-        </div>
-
-        <button type="submit" class="btn-submit">➕ Add Employee</button>
       </form>
     </section>
   </main>
 
+  <script src="assets/js/data.js"></script>
   <script src="assets/js/form.js"></script>
 </body>
 </html>

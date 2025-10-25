@@ -7,6 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectAll = document.getElementById("selectAll");
   const pagination = document.getElementById("pagination");
 
+  // Populate role filter with available roles
+  const roles = JSON.parse(localStorage.getItem('employeeRoles')) || [
+    'Manager', 'Developer', 'HR', 'Designer', 'Analyst', 'Team Lead'
+  ];
+  roles.forEach(role => {
+    const option = document.createElement('option');
+    option.value = role;
+    option.textContent = role;
+    roleFilter.appendChild(option);
+  });
+
   let employees = getEmployees();
   let currentPage = 1;
   const rowsPerPage = 5;
@@ -24,12 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
       row.innerHTML = `
         <td><input type="checkbox" class="rowCheckbox" data-id="${emp.id}"></td>
         <td>${emp.id}</td>
-        <td>${emp.name}</td>
+        <td>
+          <a href="edit-employee.html?id=${emp.id}" class="name-link">${emp.name}</a>
+        </td>
         <td>${emp.email}</td>
         <td>${emp.role}</td>
-        <td>
-          <a href="edit-employee.html?id=${emp.id}">Edit</a> |
-          <button class="delete" onclick="deleteEmployee(${emp.id})">Delete</button>
+        <td>${emp.startDate ? formatDate(emp.startDate) : 'N/A'}</td>
+        <td>${emp.salary ? formatSalary(emp.salary) : 'N/A'}</td>
+        <td class="actions">
+          <a href="edit-employee.html?id=${emp.id}" class="edit-btn">✏️ Edit</a>
+          <button class="delete-btn" onclick="deleteEmployee(${emp.id})">🗑️ Delete</button>
         </td>`;
       tableBody.appendChild(row);
     });
@@ -85,8 +100,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Delete single
   window.deleteEmployee = function(id) {
+    const employeeToDelete = employees.find(emp => emp.id === id);
+    if (employeeToDelete) {
+      // Log delete activity
+      let activities = JSON.parse(localStorage.getItem('employeeActivities')) || [];
+      const activity = {
+        id: Date.now(),
+        type: 'delete',
+        data: {
+          name: employeeToDelete.name,
+          role: employeeToDelete.role
+        },
+        timestamp: new Date().toISOString()
+      };
+      activities.unshift(activity);
+      activities = activities.slice(0, 100); // Keep only last 100 activities
+      localStorage.setItem('employeeActivities', JSON.stringify(activities));
+    }
+
     employees = employees.filter(emp => emp.id !== id);
     saveEmployees(employees);
+    // Dispatch custom event for real-time updates
+    window.dispatchEvent(new CustomEvent('employeeDataChanged'));
     applyFilters();
   };
 
@@ -96,6 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let ids = Array.from(selected).map(cb => parseInt(cb.dataset.id));
     employees = employees.filter(emp => !ids.includes(emp.id));
     saveEmployees(employees);
+    // Dispatch custom event for real-time updates
+    window.dispatchEvent(new CustomEvent('employeeDataChanged'));
     applyFilters();
   });
 

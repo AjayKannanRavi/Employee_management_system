@@ -1,21 +1,27 @@
-/* ===== Employee Page Styles (Unified with Settings) ===== */
-body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  margin: 0;
-  background: #f4f6f9;
-  color: #333;
+@import 'base.css';
+
+/* Table Container */
+.table-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    animation: scaleIn 0.3s ease;
+    position: relative;
 }
 
-/* ===== Header ===== */
+/* Modern Header */
 header {
-  background: #2c3e50;
-  color: white;
-  padding: 1em 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+    color: white;
+    padding: var(--spacing-4) var(--spacing-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
 }
 
 header h1 {
@@ -39,7 +45,237 @@ nav a.active {
 
 /* ===== Main Layout ===== */
 main {
-  padding: 30px;
+    padding: var(--spacing-6);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Modern Table Styles */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: var(--spacing-4);
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+th, td {
+    padding: var(--spacing-4) var(--spacing-5);
+    text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+th {
+    background: var(--gray-50);
+    font-weight: 600;
+    color: var(--gray-700);
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+}
+
+tr {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+tr:not(:last-child) td {
+    border-bottom: 1px solid var(--gray-200);
+}
+
+tr:hover {
+    background-color: var(--gray-50);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Cell animations on page load */
+td {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+tr:nth-child(1) td { animation-delay: 0.1s; }
+tr:nth-child(2) td { animation-delay: 0.2s; }
+tr:nth-child(3) td { animation-delay: 0.3s; }
+tr:nth-child(4) td { animation-delay: 0.4s; }
+tr:nth-child(5) td { animation-delay: 0.5s; }
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: var(--spacing-2);
+}
+
+.btn-edit, .btn-delete {
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: var(--primary-50);
+    color: var(--primary-700);
+}
+
+.btn-edit:hover {
+    background: var(--primary-100);
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: var(--red-50);
+    color: var(--red-700);
+}
+
+.btn-delete:hover {
+    background: var(--red-100);
+    transform: translateY(-1px);
+}
+
+/* Search and Filter Controls */
+.controls {
+    display: flex;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6);
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: var(--spacing-3) var(--spacing-4);
+    padding-left: var(--spacing-10);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+    border-color: var(--primary-400);
+    box-shadow: 0 0 0 3px var(--primary-100);
+    outline: none;
+}
+
+.search-box::before {
+    content: "🔍";
+    position: absolute;
+    left: var(--spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-400);
+    pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    th, td {
+        padding: var(--spacing-3);
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+/* Add Employee Button */
+.add-employee-btn {
+    background: var(--primary-600);
+    color: white;
+    padding: var(--spacing-3) var(--spacing-6);
+    border-radius: var(--radius-md);
+    border: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.add-employee-btn:hover {
+    background: var(--primary-700);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.add-employee-btn::before {
+    content: "+";
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* Loading States */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--gray-200);
+    border-top-color: var(--primary-500);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-12);
+    color: var(--gray-500);
+}
+
+.empty-state svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--spacing-4);
+    color: var(--gray-400);
+}
+
+.empty-state h3 {
+    margin: 0;
+    margin-bottom: var(--spacing-2);
+    color: var(--gray-700);
+}
+
+.empty-state p {
+    margin: 0;
+    margin-bottom: var(--spacing-6);
 }
 
 /* ===== Employee Controls (Search, Filter, Add) ===== */
@@ -49,6 +285,45 @@ main {
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
+
+/* Action Buttons */
+.edit-btn, .delete-btn {
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 4px;
+  font-size: 14px;
+  border: 1px solid;
+  transition: all 0.2s;
+}
+
+.edit-btn {
+  background-color: #3182ce;
+  color: white;
+  border-color: #2c5282;
+}
+
+.edit-btn:hover {
+  background-color: #2c5282;
+  text-decoration: none;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #e53e3e;
+  color: white;
+  border-color: #c53030;
+}
+
+.delete-btn:hover {
+  background-color: #c53030;
+  color: white;
+}
+
 
 .employee-controls input,
 .employee-controls select,
